@@ -3,9 +3,10 @@ package br.univille.poo.app.view;
 import javax.swing.*;
 
 import br.univille.poo.app.entidade.Tarefa;
-import br.univille.poo.app.servico.CriarLista;
+import br.univille.poo.app.servico.CriaLista;
+
 import br.univille.poo.app.servico.CriarTarefa;
-import br.univille.poo.app.servico.ListarListas;
+
 import br.univille.poo.app.servico.ListarTarefas;
 
 import java.awt.event.ActionEvent;
@@ -13,6 +14,7 @@ import java.awt.event.ActionListener;
 
 public class Janela extends JFrame {
 
+    private CriaLista criaLista = new CriaLista();
     private JPanel panel;
     private JTextArea campoTextArea;
     private JComboBox<String> opcoesComboBox;
@@ -32,7 +34,7 @@ public class Janela extends JFrame {
     }
 
     private void configurarJanela() {
-        JPanel panel = new JPanel();
+        panel = new JPanel();
         panel.setLayout(null);
 
         campoTextArea = new JTextArea(40,100);
@@ -91,8 +93,33 @@ public class Janela extends JFrame {
         panel.add(cancelarBotao);
         panel.add(opcoesComboBox);
         panel.add(campoTextArea);
-//        popularLista();
+        popularLista();
         add(panel);
+    }
+
+//          ListarTarefas listarTarefas = new ListarTarefas();
+//           for(Tarefa t : listarTarefas.obterTodos()){
+//             System.out.println(t);
+//           }
+
+    private void popularLista(){
+        ListarTarefas listarTarefas = new ListarTarefas();
+        for(Tarefa t : listarTarefas.obterTodos()){
+            panel.add(ItemLista(t));
+            panel.add(Box.createVerticalStrut(20));
+        }
+    }
+
+    private JPanel ItemLista(Tarefa t){
+        JPanel panel = new JPanel();
+        JLabel label = new JLabel(t.getDescricao());
+        JCheckBox CheckBox = new JCheckBox("");
+        CheckBox.setSelected(true);
+
+        panel.setBorder(BorderFactory.createEtchedBorder());
+        panel.add(label);
+        panel.add(CheckBox);
+        return panel;
     }
 
 

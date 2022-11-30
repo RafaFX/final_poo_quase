@@ -45,4 +45,7 @@ public class ListaDAO extends BaseDAO {
         return listaSuprema;
     }
 
+    public void add(String string) {
+    }
+
 }

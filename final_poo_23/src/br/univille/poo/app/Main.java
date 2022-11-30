@@ -1,6 +1,5 @@
 package br.univille.poo.app;
 
-import java.util.Scanner;
 
 // import br.univille.poo.app.entidade.Lista;
 // import br.univille.poo.app.entidade.Tarefa;
